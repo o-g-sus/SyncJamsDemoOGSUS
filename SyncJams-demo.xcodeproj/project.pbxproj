@@ -13,7 +13,6 @@
 		CB496F8C1B0A8AFA00A22990 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB496F881B0A8A6400A22990 /* AudioToolbox.framework */; };
 		CB496F8D1B0A8AFA00A22990 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB496F891B0A8A6400A22990 /* AVFoundation.framework */; };
 		CB496F8E1B0A8BB000A22990 /* libpd-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB496F7F1B0A877700A22990 /* libpd-ios.a */; };
-		CB97605F1B0A935F000D5789 /* pure-data in Resources */ = {isa = PBXBuildFile; fileRef = CB97605E1B0A935F000D5789 /* pure-data */; };
 		CBCEEBFF1AFFF4EA0090470B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBCEEBF71AFFF4EA0090470B /* Main.storyboard */; };
 		CBCEEC001AFFF4EA0090470B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCEEBF91AFFF4EA0090470B /* AppDelegate.m */; };
 		CBCEEC011AFFF4EA0090470B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCEEBFB1AFFF4EA0090470B /* ViewController.m */; };
@@ -54,7 +53,6 @@
 		CB496F791B0A877700A22990 /* libpd.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libpd.xcodeproj; path = "../PD-Clone/libpd/libpd.xcodeproj"; sourceTree = "<group>"; };
 		CB496F881B0A8A6400A22990 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		CB496F891B0A8A6400A22990 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		CB97605E1B0A935F000D5789 /* pure-data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "pure-data"; sourceTree = "<group>"; };
 		CBCEEBF71AFFF4EA0090470B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CBCEEBF81AFFF4EA0090470B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CBCEEBF91AFFF4EA0090470B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 		3063450C1AFE8572000A747B /* SyncJams-demo */ = {
 			isa = PBXGroup;
 			children = (
-				CB97605D1B0A9341000D5789 /* SyncJams */,
 				CBCEEBFE1AFFF4EA0090470B /* LaunchScreen.xib */,
 				CBCEEBF71AFFF4EA0090470B /* Main.storyboard */,
 				CBEE4E271B03AFEA00720F7A /* UI */,
@@ -132,14 +129,6 @@
 				CB496F811B0A877700A22990 /* libpd-osx.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		CB97605D1B0A9341000D5789 /* SyncJams */ = {
-			isa = PBXGroup;
-			children = (
-				CB97605E1B0A935F000D5789 /* pure-data */,
-			);
-			name = SyncJams;
 			sourceTree = "<group>";
 		};
 		CBEE4E271B03AFEA00720F7A /* UI */ = {
@@ -235,7 +224,6 @@
 			files = (
 				CBCEEC031AFFF4EA0090470B /* LaunchScreen.xib in Resources */,
 				306345411AFEA6FA000A747B /* pd in Resources */,
-				CB97605F1B0A935F000D5789 /* pure-data in Resources */,
 				3063451B1AFE8572000A747B /* Images.xcassets in Resources */,
 				CBCEEBFF1AFFF4EA0090470B /* Main.storyboard in Resources */,
 			);

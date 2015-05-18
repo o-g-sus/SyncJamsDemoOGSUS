@@ -1,5 +1,5 @@
 #N canvas 0 22 1198 838 10;
-#X declare -path ../SyncJams/pure-data;
+#X declare -path SyncJams;
 #X obj 79 392 hsl 128 15 0 127 0 0 /myslider/1 /myslider/1/r /myslider/1
 -2 -8 0 10 -262144 -1 -1 0 0;
 #X obj 79 426 hsl 128 15 0 127 0 0 /myslider/2 /myslider/2/r /myslider/2
@@ -21,7 +21,7 @@ network:;
 #N canvas 559 158 450 300 init 0;
 #X obj 18 24 loadbang;
 #X msg 18 69 \; bpm-r set 180;
-#X obj 228 13 declare -path ../SyncJams/pure-data;
+#X obj 228 13 declare -path SyncJams;
 #X restore 402 19 pd init;
 #X obj 240 414 syncjams-gui-connector \$0/sync /myslider/2 /myslider/2/r
 ;
