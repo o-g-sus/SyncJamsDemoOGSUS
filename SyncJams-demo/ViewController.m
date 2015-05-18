@@ -97,7 +97,7 @@
         _changeTickDivLabel.text = [NSString stringWithFormat:@"%i",(int)self.myslider_2.value];
 	}
     if(sender == self.myslider) {
-        [PdBase sendFloat:self.myslider.value toReceiver:@"/myslider/1"];
+        [PdBase sendFloat:self.myslider.value toReceiver:@"myslider"];
         _changeMySliderLabel.text = [NSString stringWithFormat:@"%i",(int)self.myslider.value];
     }
     
