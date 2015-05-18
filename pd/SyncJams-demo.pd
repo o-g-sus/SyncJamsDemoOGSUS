@@ -1,0 +1,119 @@
+#N canvas 0 22 1198 838 10;
+#X declare -path ../SyncJams/pure-data;
+#X obj 79 392 hsl 128 15 0 127 0 0 /myslider/1 /myslider/1/r /myslider/1
+-2 -8 0 10 -262144 -1 -1 0 0;
+#X obj 79 426 hsl 128 15 0 127 0 0 /myslider/2 /myslider/2/r /myslider/2
+-2 -8 0 10 -262144 -1 -1 0 1;
+#X obj 76 448 tgl 15 0 /mytoggle/1 /mytoggle/1/r /mytoggle/1 17 7 0
+10 -262144 -1 -1 0 1;
+#X obj 240 392 syncjams-gui-connector \$0/sync /myslider/1 /myslider/1/r
+;
+#X floatatom -75 152 5 0 0 0 - - -;
+#X text -9 151 <- here is the metronome/clock/tick to use to drive
+a synth;
+#X obj -75 85 syncjams-state /BPM;
+#X floatatom 36 107 5 0 0 0 - - -;
+#X text 72 106 <- network specified BPM;
+#X text 70 349 User interface elements synched to all patches on the
+network:;
+#X msg 314 177 set-state /BPM \$1;
+#X obj 307 213 s \$0/sync;
+#N canvas 559 158 450 300 init 0;
+#X obj 18 24 loadbang;
+#X msg 18 69 \; bpm-r set 180;
+#X obj 228 13 declare -path ../SyncJams/pure-data;
+#X restore 402 19 pd init;
+#X obj 240 414 syncjams-gui-connector \$0/sync /myslider/2 /myslider/2/r
+;
+#X obj 240 436 syncjams-gui-connector \$0/sync /mytoggle/1 /mytoggle/1/r
+;
+#X text -77 11 Simply instantiating the SyncJams instance like this
+on multiple devices will make it sync with other instances on the same
+LAN with the same 'namespace':;
+#X text 463 102 Send a BPM change to the network;
+#X obj -75 178 s tick;
+#X obj 50 249 s node-id;
+#X floatatom 50 217 10 0 0 0 - - -;
+#X obj -75 128 route tick;
+#X text 118 218 <- unique id for this node;
+#X obj 50 192 route node-id;
+#N canvas 0 22 219 180 get 0;
+#X obj 53 107 outlet;
+#X msg 53 75 get-node-id;
+#X obj 53 26 loadbang;
+#X obj 53 51 delay 1000;
+#X connect 1 0 0 0;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X restore 288 97 pd get node-id after 1s;
+#X obj 36 126 s bpm;
+#X obj 468 137 hsl 128 15 30 250 0 0 empty changeBPM changeBPM -2 -8
+0 10 -262144 -1 -1 0 0;
+#X obj -7 167 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 187 64 <- all "my-drum-circle" SyncJams will sync. syncjams
+\$0/sync \, namespace my-drum-circle;
+#X obj -75 63 syncjams \$0/sync \, namespace my-drum-circle;
+#N canvas 0 22 713 480 soundengine 0;
+#X obj 245 443 dac~;
+#X obj 104 257 perk-bell;
+#X floatatom 31 103 5 0 0 0 - - -;
+#X floatatom 46 53 5 0 0 2 tick-divide tick-divide -;
+#X obj 31 180 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 31 134 sel 0;
+#X obj 96 170 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 159 195 s playBang;
+#X obj 31 78 % 0;
+#X obj 314 253 perk-lowtom;
+#X obj 181 378 *~ 1;
+#X obj 269 380 *~ 1;
+#X floatatom 362 395 5 0 0 2 level - -;
+#X floatatom 205 349 5 0 1 2 syn-mix syn-mix -;
+#X msg 360 330 1;
+#X obj 360 355 -;
+#X obj 31 18 r tick;
+#X connect 1 0 10 0;
+#X connect 2 0 5 0;
+#X connect 3 0 8 1;
+#X connect 4 0 1 0;
+#X connect 4 0 7 0;
+#X connect 4 0 9 0;
+#X connect 5 0 4 0;
+#X connect 5 1 6 0;
+#X connect 8 0 2 0;
+#X connect 9 0 11 0;
+#X connect 10 0 0 0;
+#X connect 10 0 0 1;
+#X connect 11 0 0 1;
+#X connect 11 0 0 0;
+#X connect 12 0 11 1;
+#X connect 13 0 10 1;
+#X connect 13 0 15 1;
+#X connect 13 0 14 0;
+#X connect 14 0 15 0;
+#X connect 15 0 12 0;
+#X connect 16 0 8 0;
+#X restore -68 344 pd soundengine;
+#X obj 736 137 hsl 128 15 1 100 0 0 empty myslider myslider -2 -8 0
+10 -262144 -1 -1 0 0;
+#X text 731 103 A custom slider value sent over network;
+#X msg 733 166 set-state /myslider \$1;
+#X obj 733 196 s \$0/sync;
+#X obj 767 279 print slider;
+#X connect 4 0 26 0;
+#X connect 4 0 17 0;
+#X connect 6 0 20 0;
+#X connect 6 1 7 0;
+#X connect 7 0 24 0;
+#X connect 10 0 11 0;
+#X connect 19 0 18 0;
+#X connect 20 0 4 0;
+#X connect 20 1 22 0;
+#X connect 22 0 19 0;
+#X connect 23 0 11 0;
+#X connect 25 0 10 0;
+#X connect 28 0 6 0;
+#X connect 30 0 32 0;
+#X connect 32 0 34 0;
