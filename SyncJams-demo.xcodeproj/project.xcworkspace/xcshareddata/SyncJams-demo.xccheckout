@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7C3BA0BE-29DB-408E-AF99-6BCBF4EA6020</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SyncJams-demo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1A0B07D1631AC7F0F17FCE76695E42D64F01958F</key>
+		<string>git://github.com/libpd/libpd.git</string>
+		<key>778D08CA7C55C6E283FAC4140D174E64889DF148</key>
+		<string>https://github.com/libpd/pd-for-ios</string>
+		<key>7C5FD15E693486DD7736267E32E43E2B80AD1746</key>
+		<string>https://github.com/o-g-sus/SyncJamsDemoOGSUS</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SyncJams-demo.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1A0B07D1631AC7F0F17FCE76695E42D64F01958F</key>
+		<string>../../../PD-Clone/libpd</string>
+		<key>778D08CA7C55C6E283FAC4140D174E64889DF148</key>
+		<string>../../../PD-Clone</string>
+		<key>7C5FD15E693486DD7736267E32E43E2B80AD1746</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/o-g-sus/SyncJamsDemoOGSUS</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7C5FD15E693486DD7736267E32E43E2B80AD1746</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1A0B07D1631AC7F0F17FCE76695E42D64F01958F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>libpd</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>778D08CA7C55C6E283FAC4140D174E64889DF148</string>
+			<key>IDESourceControlWCCName</key>
+			<string>PD-Clone</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7C5FD15E693486DD7736267E32E43E2B80AD1746</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SyncJamsDemoOGSUS</string>
+		</dict>
+	</array>
+</dict>
+</plist>
