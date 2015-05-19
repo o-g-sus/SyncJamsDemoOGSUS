@@ -16,9 +16,9 @@
 @property (strong, nonatomic) PdFile *patch;
 
 // gui elements
-@property (weak, nonatomic) IBOutlet UISlider *myslider; // range in IB
-@property (weak, nonatomic) IBOutlet UISlider *myslider_2; // range in IB
-@property (weak, nonatomic) IBOutlet UISlider *myslider_1; // range in IB
+@property (weak, nonatomic) IBOutlet UISlider *myslider;      // range in IB
+@property (weak, nonatomic) IBOutlet UISlider *tickDivSlider; // range in IB
+@property (weak, nonatomic) IBOutlet UISlider *bpmSlider;     // range in IB
 
 @property (weak, nonatomic) IBOutlet UISwitch *mytoggle1; // 0-1 (BOOL)
 
@@ -27,9 +27,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *changeMySliderLabel;
 
 
-@property (weak, nonatomic) IBOutlet UILabel *nodeLabel; // show current node-id
-@property (weak, nonatomic) IBOutlet UILabel *bpmLabel; // show current bpm
-@property (weak, nonatomic) IBOutlet UILabel *tickLabel; // show current tick count
+@property (weak, nonatomic) IBOutlet UILabel *netNodeLabel; // show current node-id
+@property (weak, nonatomic) IBOutlet UILabel *netBPMLabel; // show current bpm
+@property (weak, nonatomic) IBOutlet UILabel *netTickLabel; // show current tick count
+@property (weak, nonatomic) IBOutlet UILabel *netSliderValueLabel;
+
 
 @property (weak, nonatomic) IBOutlet UIView *blinkView;
 @property (weak, nonatomic) IBOutlet UIView *blinkView2;
@@ -57,7 +59,7 @@
 	[PdBase subscribe:@"/myslider/1/r"];
 	[PdBase subscribe:@"/myslider/2/r"];
 	[PdBase subscribe:@"/mytoggle/1/r"];
-    [PdBase subscribe:@"myslider"];
+    [PdBase subscribe:@"netSlidervalue"];
 	
 	// receive node-id & current tick
 	[PdBase subscribe:@"node-id"];
@@ -78,10 +80,10 @@
 #pragma mark - UI Interaction
 
 - (IBAction)sliderChanged:(id)sender {
-    if(sender == self.myslider_1) {
+    if(sender == self.bpmSlider) {
         //[PdBase sendFloat:self.myslider2.value toReceiver:@"/myslider/2"];
-        [PdBase sendFloat:self.myslider_1.value toReceiver:@"changeBPM"];
-        _changeBPMLabel.text = [NSString stringWithFormat:@"%i",(int)self.myslider_1.value];
+        [PdBase sendFloat:self.bpmSlider.value toReceiver:@"changeBPM"];
+        _changeBPMLabel.text = [NSString stringWithFormat:@"%i",(int)self.bpmSlider.value];
         _changeBPMLabel.alpha = 1;
         [UIView animateWithDuration:1
                               delay:3
@@ -91,13 +93,13 @@
             //
         }];
     }
-	if(sender == self.myslider_2) {
+	if(sender == self.tickDivSlider) {
 		//[PdBase sendFloat:self.myslider1.value toReceiver:@"/myslider/1"];
-        [PdBase sendFloat: (int)self.myslider_2.value toReceiver:@"tick-divide"];
-        _changeTickDivLabel.text = [NSString stringWithFormat:@"%i",(int)self.myslider_2.value];
+        [PdBase sendFloat: (int)self.tickDivSlider.value toReceiver:@"tick-divide"];
+        _changeTickDivLabel.text = [NSString stringWithFormat:@"%i",(int)self.tickDivSlider.value];
 	}
     if(sender == self.myslider) {
-        [PdBase sendFloat:self.myslider.value toReceiver:@"myslider"];
+        [PdBase sendFloat:self.myslider.value toReceiver:@"changeSlider"];
         _changeMySliderLabel.text = [NSString stringWithFormat:@"%i",(int)self.myslider.value];
     }
     
@@ -123,13 +125,29 @@
 }
 
 - (void)receiveFloat:(float)received fromSource:(NSString *)source {
-	
+    
 	// receieve floats for each gui element
-    if([source isEqualToString:@"myslider"]) {
-        NSLog(@"%@ - myslider %f", NSStringFromClass([self class]) , received);
+    if([source isEqualToString:@"/myslider"]) {
+        self.netSliderValueLabel.text = [NSString stringWithFormat:@"%d", (int)received];
+    }
+    // node-id sometimes comes as a float, sometimes as a list
+    else if([source isEqualToString:@"node-id"]) {
+        self.netNodeLabel.text = [NSString stringWithFormat:@"%d", (int)received];
+    }
+    
+    // current bpm value
+    else if([source isEqualToString:@"bpm"]) {
+        self.netBPMLabel.text = [NSString stringWithFormat:@"%d", (int)received];
+    }
+    
+    // current tick value
+    else if([source isEqualToString:@"tick"]) {
+        self.netTickLabel.text = [NSString stringWithFormat:@"%d", (int)received];
+        [self triggerUpdate2];
     }
     
     
+    /*
 	if([source isEqualToString:@"/myslider/1/r"]) {
 		self.myslider_2.value = received;
 	}
@@ -139,27 +157,9 @@
 	else if([source isEqualToString:@"/mytoggle/1/r"]) {
 		self.mytoggle1.on = received;
 	}
-	
-	// node-id sometimes comes as a float, sometimes as a list
-	else if([source isEqualToString:@"node-id"]) {
-		self.nodeLabel.text = [NSString stringWithFormat:@"%d", (int)received];
-		return;
-	}
-	
-	// current bpm value
-	else if([source isEqualToString:@"bpm"]) {
-		self.bpmLabel.text = [NSString stringWithFormat:@"%d", (int)received];
-		return;
-	}
-	
-	// current tick value
-	else if([source isEqualToString:@"tick"]) {
-		self.tickLabel.text = [NSString stringWithFormat:@"%d", (int)received];
-        [self triggerUpdate2];
-		return;
-	}
-	
-	NSLog(@"Float from %@: %f", source, received);
+     */
+
+	if (![source isEqualToString:@"tick"]) NSLog(@"Float from %@: %f", source, received);
 }
 
 
@@ -173,7 +173,7 @@
 	
 	// node-id sometimes comes as a float, sometimes as a list
 	if([source isEqualToString:@"node-id"] && list.count > 0 && [list.firstObject isKindOfClass:[NSNumber class]]) {
-		self.nodeLabel.text = [NSString stringWithFormat:@"%@", list.firstObject];
+		self.netNodeLabel.text = [NSString stringWithFormat:@"%@", list.firstObject];
 		return;
 	}
 	
@@ -185,10 +185,10 @@
 	// receive set messages for each gui element
 	if([message isEqualToString:@"set"] && arguments.count > 1 && [arguments.firstObject isKindOfClass:[NSNumber class]]) {
 		if([source isEqualToString:@"/myslider/1/r"]) {
-			self.myslider_2.value = [arguments[0] floatValue];
+			self.tickDivSlider.value = [arguments[0] floatValue];
 		}
 		else if([source isEqualToString:@"/myslider/2/r"]) {
-			self.myslider_1.value = [arguments[0] floatValue];
+			self.bpmSlider.value = [arguments[0] floatValue];
 		}
 		else if([source isEqualToString:@"/mytoggle/1/r"]) {
 			self.mytoggle1.on = [arguments[0] boolValue];

@@ -1,21 +1,11 @@
-#N canvas 0 22 1198 838 10;
+#N canvas 0 23 1198 838 10;
 #X declare -path SyncJams;
-#X obj 79 392 hsl 128 15 0 127 0 0 /myslider/1 /myslider/1/r /myslider/1
--2 -8 0 10 -262144 -1 -1 0 0;
-#X obj 79 426 hsl 128 15 0 127 0 0 /myslider/2 /myslider/2/r /myslider/2
--2 -8 0 10 -262144 -1 -1 0 1;
-#X obj 76 448 tgl 15 0 /mytoggle/1 /mytoggle/1/r /mytoggle/1 17 7 0
-10 -262144 -1 -1 0 1;
-#X obj 240 392 syncjams-gui-connector \$0/sync /myslider/1 /myslider/1/r
-;
 #X floatatom -75 152 5 0 0 0 - - -;
 #X text -9 151 <- here is the metronome/clock/tick to use to drive
 a synth;
 #X obj -75 85 syncjams-state /BPM;
 #X floatatom 36 107 5 0 0 0 - - -;
 #X text 72 106 <- network specified BPM;
-#X text 70 349 User interface elements synched to all patches on the
-network:;
 #X msg 314 177 set-state /BPM \$1;
 #X obj 307 213 s \$0/sync;
 #N canvas 559 158 450 300 init 0;
@@ -23,10 +13,6 @@ network:;
 #X msg 18 69 \; bpm-r set 180;
 #X obj 228 13 declare -path SyncJams;
 #X restore 402 19 pd init;
-#X obj 240 414 syncjams-gui-connector \$0/sync /myslider/2 /myslider/2/r
-;
-#X obj 240 436 syncjams-gui-connector \$0/sync /mytoggle/1 /mytoggle/1/r
-;
 #X text -77 11 Simply instantiating the SyncJams instance like this
 on multiple devices will make it sync with other instances on the same
 LAN with the same 'namespace':;
@@ -96,23 +82,31 @@ LAN with the same 'namespace':;
 #X connect 15 0 12 0;
 #X connect 16 0 8 0;
 #X restore -68 344 pd soundengine;
-#X obj 736 137 hsl 128 15 1 100 0 0 empty myslider myslider -2 -8 0
-10 -262144 -1 -1 0 0;
+#X obj 736 137 hsl 128 15 1 100 0 0 empty changeSlider changeSlider
+-2 -8 0 10 -262144 -1 -1 0 0;
 #X text 731 103 A custom slider value sent over network;
-#X msg 733 166 set-state /myslider \$1;
-#X obj 733 207 print slider;
-#X connect 4 0 26 0;
-#X connect 4 0 17 0;
-#X connect 6 0 20 0;
-#X connect 6 1 7 0;
-#X connect 7 0 24 0;
-#X connect 10 0 11 0;
-#X connect 19 0 18 0;
-#X connect 20 0 4 0;
-#X connect 20 1 22 0;
-#X connect 22 0 19 0;
-#X connect 23 0 11 0;
-#X connect 25 0 10 0;
-#X connect 28 0 6 0;
-#X connect 30 0 32 0;
-#X connect 32 0 33 0;
+#X floatatom 688 275 5 0 0 0 - - -;
+#X obj 748 336 s netSlidervalue;
+#X msg 733 166 set-state /slider \$1;
+#X obj 559 248 syncjams-state /slider;
+#X obj 755 215 print set;
+#X obj 660 337 print net;
+#X connect 0 0 19 0;
+#X connect 0 0 10 0;
+#X connect 2 0 13 0;
+#X connect 2 1 3 0;
+#X connect 3 0 17 0;
+#X connect 5 0 6 0;
+#X connect 12 0 11 0;
+#X connect 13 0 0 0;
+#X connect 13 1 15 0;
+#X connect 15 0 12 0;
+#X connect 16 0 6 0;
+#X connect 18 0 5 0;
+#X connect 21 0 2 0;
+#X connect 21 0 28 0;
+#X connect 23 0 27 0;
+#X connect 25 0 26 0;
+#X connect 25 0 30 0;
+#X connect 27 0 29 0;
+#X connect 28 1 25 0;

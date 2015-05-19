@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
@@ -80,7 +79,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="/mytoggle/1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i26-2x-oBM">
-                                <rect key="frame" x="215" y="464" width="93" height="21"/>
+                                <rect key="frame" x="215" y="464" width="75" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -117,7 +116,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGW-Mb-vqV" userLabel="BPM to Value">
-                                <rect key="frame" x="190" y="458" width="100" height="21"/>
+                                <rect key="frame" x="128" y="458" width="162" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -171,16 +170,17 @@
                     <connections>
                         <outlet property="blinkView" destination="RcC-w9-qKz" id="o9u-uH-aLr"/>
                         <outlet property="blinkView2" destination="tI2-en-FEZ" id="tra-bO-NYX"/>
-                        <outlet property="bpmLabel" destination="ovv-S0-WEJ" id="8nR-dA-FN9"/>
+                        <outlet property="bpmSlider" destination="AKb-HS-IKc" id="YrA-uh-Ew7"/>
                         <outlet property="changeBPMLabel" destination="ia4-hM-fFK" id="3KE-F8-NPU"/>
                         <outlet property="changeMySliderLabel" destination="JCm-7h-3Uh" id="aQD-wu-jf9"/>
                         <outlet property="changeTickDivLabel" destination="Wfo-z6-elr" id="6gl-DW-SG7"/>
                         <outlet property="myslider" destination="YWO-dH-iaG" id="JIm-if-kZT"/>
-                        <outlet property="myslider_1" destination="AKb-HS-IKc" id="9WG-NZ-9Tw"/>
-                        <outlet property="myslider_2" destination="bqL-zs-ae3" id="mLt-5e-4QV"/>
                         <outlet property="mytoggle1" destination="V6l-Q6-gU4" id="kWa-os-lU2"/>
-                        <outlet property="nodeLabel" destination="KWF-mh-epm" id="PGW-ax-wrP"/>
-                        <outlet property="tickLabel" destination="xjF-T6-jDr" id="WDW-TT-rlK"/>
+                        <outlet property="netBPMLabel" destination="ovv-S0-WEJ" id="FrG-fa-UrV"/>
+                        <outlet property="netNodeLabel" destination="KWF-mh-epm" id="y4h-5j-790"/>
+                        <outlet property="netSliderValueLabel" destination="wGW-Mb-vqV" id="dyf-JM-uMb"/>
+                        <outlet property="netTickLabel" destination="xjF-T6-jDr" id="wp8-NF-ELX"/>
+                        <outlet property="tickDivSlider" destination="bqL-zs-ae3" id="zzf-aG-0dP"/>
                         <outlet property="xyControl" destination="glV-nV-DcM" id="kl8-dB-XOF"/>
                     </connections>
                 </viewController>
