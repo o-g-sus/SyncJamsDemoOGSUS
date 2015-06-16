@@ -12,6 +12,8 @@
 	<dict>
 		<key>1A0B07D1631AC7F0F17FCE76695E42D64F01958F</key>
 		<string>git://github.com/libpd/libpd.git</string>
+		<key>6F7A20C0CDB7BDCD5180DBA15CA6EBFFD435B7B5</key>
+		<string>https://github.com/pure-data/pure-data.git</string>
 		<key>778D08CA7C55C6E283FAC4140D174E64889DF148</key>
 		<string>https://github.com/libpd/pd-for-ios</string>
 		<key>7C5FD15E693486DD7736267E32E43E2B80AD1746</key>
@@ -23,6 +25,8 @@
 	<dict>
 		<key>1A0B07D1631AC7F0F17FCE76695E42D64F01958F</key>
 		<string>../../../PD-Clone/libpd</string>
+		<key>6F7A20C0CDB7BDCD5180DBA15CA6EBFFD435B7B5</key>
+		<string>../../../pd-for-ios/libpd/pure-data</string>
 		<key>778D08CA7C55C6E283FAC4140D174E64889DF148</key>
 		<string>../../../PD-Clone</string>
 		<key>7C5FD15E693486DD7736267E32E43E2B80AD1746</key>
@@ -51,6 +55,14 @@
 			<string>778D08CA7C55C6E283FAC4140D174E64889DF148</string>
 			<key>IDESourceControlWCCName</key>
 			<string>PD-Clone</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>6F7A20C0CDB7BDCD5180DBA15CA6EBFFD435B7B5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>pure-data</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
